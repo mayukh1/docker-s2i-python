@@ -1,0 +1,9 @@
+# uvicorn authentication.main:app --reload
+# pip install fastapi[all] uvicorn sqlalchemy asyncpg psycopg2-binary
+# pip install psycopg[binary]
+
+
+
+
+
+
