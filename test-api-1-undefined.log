@@ -1,0 +1,108 @@
+Adding cluster TLS certificate authority to trust store
+Cloning "https://github.ibm.com/oic-intellidoc-tms/agentic-document-reviewer1.git" ...
+	Commit:	6f9131b14f2af06372adb408b2c36cc5ee8dbbe5 (Update Dockerfile)
+	Author:	Mayukh Mallick <maymall1@in.ibm.com>
+	Date:	Wed Aug 20 18:29:03 2025 +0530
+Adding cluster TLS certificate authority to trust store
+Adding cluster TLS certificate authority to trust store
+time="2025-08-20T13:02:19Z" level=info msg="Not using native diff for overlay, this may cause degraded performance for building images: kernel has CONFIG_OVERLAY_FS_REDIRECT_DIR enabled"
+I0820 13:02:19.295435       1 defaults.go:112] Defaulting to storage driver "overlay" with options [mountopt=metacopy=on].
+Caching blobs under "/var/cache/blobs".
+
+Pulling image node:20-alpine ...
+Resolving "node" using unqualified-search registries (/var/run/configs/openshift.io/build-system/registries.conf)
+Trying to pull registry.redhat.io/node:20-alpine...
+Trying to pull registry.access.redhat.com/node:20-alpine...
+Trying to pull quay.io/node:20-alpine...
+Trying to pull docker.io/library/node:20-alpine...
+Getting image source signatures
+Copying blob sha256:a9e48ad1219d4d11c6456a8db0fd5c11af46242d52edf84e17ab84a7bfd93809
+Copying blob sha256:8c59d92d6fc9f01af4aaa86824be72b74bd4d940c4c46aa95d9710bfa46c975e
+Copying blob sha256:54225bd601967a0aa669ec9be621c24d8eeac874b698d55874018070898685c2
+Copying blob sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8
+Copying config sha256:7cdef5a331927fafa250be6166052d8599bf5eb7b014342538c2cc79b70a081f
+Writing manifest to image destination
+Adding transient rw bind mount for /run/secrets/rhsm
+STEP 1/15: FROM node:20-alpine
+STEP 2/15: WORKDIR /app
+--> 00b070e73e78
+STEP 3/15: COPY package*.json ./
+--> d7850b726954
+STEP 4/15: RUN npm ci
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated passport-saml@3.2.4: For versions >= 4, please use scopped package @node-saml/passport-saml
+npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+npm warn deprecated @humanwhocodes/config-array@0.11.14: Use @eslint/config-array instead
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+added 717 packages, and audited 718 packages in 29s
+
+234 packages are looking for funding
+  run `npm fund` for details
+
+6 vulnerabilities (3 low, 2 moderate, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.5.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.5.2
+npm notice To update run: npm install -g npm@11.5.2
+npm notice
+time="2025-08-20T13:03:15Z" level=warning msg="archive: skipping \"/var/lib/containers/storage/overlay/bdcb9399a6bbe42a7d5250f4bdd2cd7f40041aad141ce7a4abb34b5967bc1a65/merged/tmp/ibmtelemetry-ipc\" since it is a socket"
+--> 41d9b448645e
+STEP 5/15: COPY . .
+--> 0a481bb2d6c8
+STEP 6/15: RUN npm run build
+
+> reviewer-frontend@0.1.0 build
+> next build
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+  ▲ Next.js 14.2.30
+
+   Creating an optimized production build ...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./src/app/admin-dashboard/page.js
+52:6  Warning: React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/document-status/page.js
+51:6  Warning: React Hook useEffect has a missing dependency: 'loadDocumentJobs'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+219:28  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+268:58  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+268:82  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+
+./src/app/document-submit/page.js
+61:6  Warning: React Hook useEffect has a missing dependency: 'loadKnowledgeGroups'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/kb-document-upload/page.js
+58:6  Warning: React Hook useEffect has a missing dependency: 'loadKnowledgeGroups'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/kb-submit/page.js
+51:6  Warning: React Hook useEffect has a missing dependency: 'loadKnowledgeGroups'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/knowledge-groups/page.js
+53:6  Warning: React Hook useEffect has a missing dependency: 'loadKnowledgeGroups'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+error: build error: building at STEP "RUN npm run build": while running runtime: exit status 1
